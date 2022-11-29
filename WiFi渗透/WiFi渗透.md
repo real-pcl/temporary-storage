@@ -14,15 +14,15 @@
 
 - 分配无线网卡给linux（主要网卡现在不能连接WiFi）
 
-  ![分配网卡](img\分配网卡.png)
+  ![分配网卡](img/分配网卡.png)
 
-  ![查看网卡2](img\查看网卡2.png)
+  ![查看网卡2](img/查看网卡2.png)
 
 - 开启网卡监听模式，在监听模式下，无线网卡的名称已经变为了wlan0mon
 
-  ![开启监听1](img\开启监听1.png)
+  ![开启监听1](img/开启监听1.png)
 
-  ![开启监听2](C:\Users\DELL\Desktop\大三下课程作业\移动互联网安全\WiFi渗透-魏迎迎-2019302120088\img\开启监听2.png)
+  ![开启监听2](img/开启监听2.png)
 
 - 重启一下网卡
 
@@ -32,7 +32,7 @@
    sudo ifconfig wlan0mon up 
   ```
 
-  ![重启网卡](img\重启网卡.png)
+  ![重启网卡](img/重启网卡.png)
 
 #### 2.探测
 
@@ -44,17 +44,17 @@
   sudo airodump-ng wlan0mon
   ```
 
-  ![扫描wifi](img\扫描wifi.png)
+  ![扫描wifi](img/扫描wifi.png)
 
 - 重新选择USB3.0(XHCI)控制器,重新探测，成功。
 
-  ![更改usb设置](img\更改usb设置.png)
+  ![更改usb设置](img/更改usb设置.png)
 
 - 观察到**ESSID**是周围wifi的名字，最左侧的**BSSID**是这些wifi对应的mac地址。**ENC**是加密方式。**CH**是工作频道。
 
   可以看到基本都是WPA2的，很少有WPA和WEP,因为这两个的安全性都较WPA2差。
 
-  ![探测wifi](img\探测wifi.png)
+  ![探测wifi](img/探测wifi.png)
 
 - 接下来要破解图中的FAST_1041BA。可以看到它的mac地址是1C:FA:68:10:41:BA，它的工作频道是1。
 
@@ -70,7 +70,7 @@
   sudo airodump-ng –w longas -c 1 --bssid 1C:FA:68:10:41:BA --ivs wlan0mon
   ```
 
-  ![抓包](img\抓包.png)
+  ![抓包](img/抓包.png)
 
 #### 4.利用crunch生成字典进行攻击
 
@@ -87,11 +87,11 @@
   
   ```
 
-  ![洪水攻击](img\洪水攻击.png)
+  ![洪水攻击](img/洪水攻击.png)
 
 - 停掉洪水攻击，连接一下模拟别人连接，出现WPA handshake就表示成功。
 
-  ![出现WPA handshake](img\出现WPA handshake.png)
+  ![出现WPA handshake](img/出现WPA handshake.png)
 
 #### 5.利用aircrack-ng进行爆破
 
@@ -99,7 +99,7 @@
 
 - ls查看抓包名称---longas-01.ivs
 
-  ![查看包名字](img\查看包名字.png)
+  ![查看包名字](img/查看包名字.png)
 
 - 准备一个字典爆破---code.txt(为了节省时间字典中直接加入密码)
 
@@ -107,7 +107,7 @@
   sudo aircrack-ng -w code.txt longas-04.ivs
   ```
 
-  ![爆破成功](img\爆破成功.png)
+  ![爆破成功](img/爆破成功.png)
 
 
 
