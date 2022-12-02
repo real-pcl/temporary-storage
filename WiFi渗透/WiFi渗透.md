@@ -91,7 +91,7 @@
 
 - 停掉洪水攻击，连接一下模拟别人连接，出现WPA handshake就表示成功。
 
-  ![出现WPA handshake](img/出现WPA handshake.png)
+  ![出现WPAhandshake](img/出现WPAhandshake.png)
 
 #### 5.利用aircrack-ng进行爆破
 
